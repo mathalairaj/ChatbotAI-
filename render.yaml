@@ -1,0 +1,36 @@
+# Render Blueprint for NSCET AI College Assistant Backend + PostgreSQL
+services:
+  - type: web
+    name: nscet-ai-chatbot-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_CHAT_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_EMBEDDING_MODEL
+        value: text-embedding-3-small
+      - key: DB_SSL
+        value: "true"
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nscet-ai-chatbot-db
+          property: connectionString
+
+databases:
+  - name: nscet-ai-chatbot-db
+    databaseName: nscet_chatbot
+    user: nscet_admin
+    plan: starter

@@ -1,0 +1,18 @@
+{
+  "name": "nscet-ai-college-assistant",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NSCET AI College Assistant Chatbot — Nadar Saraswathi College of Engineering & Technology, Vadapudupatti, Theni, Tamil Nadu",
+  "scripts": {
+    "install:all": "npm --prefix backend install && npm --prefix frontend install",
+    "dev": "concurrently -n API,WEB -c blue,yellow \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\"",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "build": "npm --prefix frontend run build",
+    "start": "npm --prefix backend start",
+    "test": "npm --prefix backend test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
